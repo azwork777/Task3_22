@@ -9,6 +9,8 @@ public class Main {
 
         Locale.setDefault(Locale.ROOT);
 
+        printMessageAboutTests();
+
         if (!isProgramWorkingCorrectly()) {
             return;
         }
@@ -20,13 +22,19 @@ public class Main {
 
     }
 
-    private static boolean isProgramWorkingCorrectly() {
+    private static void printMessageAboutTests() {
         if (TestCase.testProgram() != 0) {
             int FailedTestNumber = TestCase.testProgram();
             System.out.println("Test number " + FailedTestNumber + " failed, the program does not work correctly");
-            return false;
         } else {
             System.out.println("All tests are correct, the program works correctly");
+        }
+    }
+
+    private static boolean isProgramWorkingCorrectly() {
+        if (TestCase.testProgram() != 0) {
+            return false;
+        } else {
             return true;
         }
     }
