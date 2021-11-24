@@ -22,7 +22,7 @@ public class Picture {
         }
     }
 
-    public static SimpleColor getColorFromAreaAboveLine(double x, double y) {
+    private static SimpleColor getColorFromAreaAboveLine(double x, double y) {
 
         if (VP.isPointInsideVerticalParabola(x, y)) {
             if (SmallP.isPointInsideHorizontalParabola(x, y)) {
@@ -53,7 +53,7 @@ public class Picture {
 
     }
 
-    public static SimpleColor getColorFromAreaUnderLine(double x, double y) {
+    private static SimpleColor getColorFromAreaUnderLine(double x, double y) {
 
         if (C.isPointInsideCircle(x, y)) {
             if (BigP.isPointInsideHorizontalParabola(x, y)) {

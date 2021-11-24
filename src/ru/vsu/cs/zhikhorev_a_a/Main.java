@@ -9,34 +9,42 @@ public class Main {
 
         Locale.setDefault(Locale.ROOT);
 
-        isProgramWorkingCorrectly();
+        if (!isProgramWorkingCorrectly()) {
+            return;
+        }
 
-        double x = ReadNumber("x");
-        double y = ReadNumber("y");
+        double x = readNumber("x");
+        double y = readNumber("y");
 
         printColorForPoint(x, y);
+
     }
 
-    public static void isProgramWorkingCorrectly() {
-        if (TestCase.testProgram()) {
+    private static boolean isProgramWorkingCorrectly() {
+        if (TestCase.testProgram() != 0) {
+            int FailedTestNumber = TestCase.testProgram();
+            System.out.println("Test number " + FailedTestNumber + " failed, the program does not work correctly");
+            return false;
+        } else {
             System.out.println("All tests are correct, the program works correctly");
+            return true;
         }
     }
 
-    public static double ReadNumber(String variable) {
+    private static double readNumber(String variable) {
         System.out.println("Input " + variable + " (ranging from -10 to 10): ");
         Scanner sc = new Scanner(System.in);
         double a = sc.nextDouble();
 
         if (Math.abs(a) > 10) {
             System.out.println("Input error. Please check the correctness of the entered data");
-            return ReadNumber(variable);
+            return readNumber(variable);
         }
 
         return a;
     }
 
-    public static void printColorForPoint(double x, double y) {
+    private static void printColorForPoint(double x, double y) {
         System.out.printf("(%.3f, %.3f) -> %s%n", x, y, Picture.getColor(x, y));
     }
 
